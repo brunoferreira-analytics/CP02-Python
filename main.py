@@ -62,3 +62,49 @@ def verificar_empate(tabuleiro):
               return False #Ainda existe jogada possível.
            
     return True #Se não encontrou espaço vazio, o jogo empatou.
+
+
+# Função responsável por verificar se a jogada é válida.
+def jogada_valida(tabuleiro, linha, coluna):
+
+    # Jogada fora do tabuleiro. 
+    if linha < 0 or linha > 2 or coluna < 0 or coluna > 2:
+        return False  # Jogada inválida.
+
+    # Vaga preenchida.
+    if tabuleiro[linha][coluna] != " ":
+        return False  # Jogada inválida.
+
+    return True  # Se a jogada for válida, retorna True.
+
+
+# Função principal do jogo.
+def jogar():
+
+    # Cria o tabuleiro vazio com 3 linhas e 3 colunas.
+    tabuleiro = [
+        [" ", " ", " "],
+        [" ", " ", " "],
+        [" ", " ", " "]
+    ]
+
+    jogador_atual = "X"  # Define que o jogador "X" começa.
+
+    # Mensagens iniciais do jogo.
+    print("=== JOGO DA VELHA ===")
+    print("Jogador 1: X")
+    print("Jogador 2: O")
+    print("Digite linha e coluna de 1 a 3.")
+
+    # Loop principal do jogo.
+    while True:
+
+        # Mostra o tabuleiro atualizado.
+        exibir_tabuleiro(tabuleiro)
+
+        # Mostra qual jogador deve jogar.
+        print("Vez do jogador", jogador_atual)
+
+        # Recebe a linha e a coluna digitadas pelo usuário.
+        linha_input = input("Digite a linha: ")
+        coluna_input = input("Digite a coluna: ")
