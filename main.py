@@ -108,3 +108,64 @@ def jogar():
         # Recebe a linha e a coluna digitadas pelo usuário.
         linha_input = input("Digite a linha: ")
         coluna_input = input("Digite a coluna: ")
+    
+# Verifica se a linha digitada é diferente de 1, 2 e 3.
+        if linha_input != "1" and linha_input != "2" and linha_input != "3":
+            print("Linha inválida! Digite apenas 1, 2 ou 3.")
+            continue  # Volta para o início do while.
+
+        # Verifica se a coluna digitada é diferente de 1, 2 e 3.
+        if coluna_input != "1" and coluna_input != "2" and coluna_input != "3":
+            print("Coluna inválida! Digite apenas 1, 2 ou 3.")
+            continue  # Volta para o início do while.
+
+        # Converte a linha para número e subtrai 1 por causa do índice 0, 1, 2. 
+        linha = int(linha_input) - 1
+
+        # Converte a coluna para número e subtrai 1 por causa do 0, 1, 2.
+        coluna = int(coluna_input) - 1
+
+        # Verifica se a jogada é válida.
+        if jogada_valida(tabuleiro, linha, coluna):
+
+            # Marca a jogada no tabuleiro.
+            tabuleiro[linha][coluna] = jogador_atual
+
+        else:
+
+            # Mensagem caso a posição já esteja ocupada.
+            print("Jogada inválida! Essa posição já está ocupada.")
+            continue  # Volta para o início do while.
+
+        # Verifica se o jogador atual venceu.
+        if verificar_vencedor(tabuleiro, jogador_atual):
+
+            # Mostra o tabuleiro final.
+            exibir_tabuleiro(tabuleiro)
+
+            # Mostra mensagem de vitória.
+            print("Parabéns! O jogador", jogador_atual, "venceu!")
+
+            break  # Encerra o loop e termina o jogo.
+
+        # Verifica se o jogo empatou. 
+        #Gustavo Fez parte.
+        if verificar_empate(tabuleiro):
+
+            # Mostra o tabuleiro final.
+            exibir_tabuleiro(tabuleiro)
+
+            # Mostra mensagem de empate.
+            print("O jogo terminou em empate!")
+
+            break  # Encerra o loop e termina o jogo.
+
+        # Alterna o jogador.
+        if jogador_atual == "X":
+            jogador_atual = "O"  # Se era X, muda para O.
+        else:
+            jogador_atual = "X"  # Se era O, muda para X.
+
+
+# Chama a função principal e inicia o jogo.
+jogar()
