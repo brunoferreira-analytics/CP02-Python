@@ -7,7 +7,7 @@
 # Gustavo da Silva Nascimento (RM: 570821)
 
 #Função mostrar o tabuleiro na tela.
-def eixibir_tabuleiro(tabuleiro):
+def exibir_tabuleiro(tabuleiro):
    print()
 
    print("    1   2   3" )
@@ -15,7 +15,7 @@ def eixibir_tabuleiro(tabuleiro):
    # Repete 3 vezes:
    for i in range(3):
       
-      #Mostra os 3 números.
+      #Mostra os 3 números, (i+1) é para começar do 1 e não do zero.
       print(i + 1, " ", tabuleiro[i][0], "|", tabuleiro[i][1], "|", tabuleiro [i][2])
 
       #Exibir a separação do tabuleiro.
@@ -109,7 +109,7 @@ def jogar():
         linha_input = input("Digite a linha: ")
         coluna_input = input("Digite a coluna: ")
     
-# Verifica se a linha digitada é diferente de 1, 2 e 3.
+        # Verifica se a linha digitada é diferente de 1, 2 e 3.
         if linha_input != "1" and linha_input != "2" and linha_input != "3":
             print("Linha inválida! Digite apenas 1, 2 ou 3.")
             continue  # Volta para o início do while.
